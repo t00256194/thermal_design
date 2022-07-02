@@ -1,11 +1,11 @@
 %ME 4720
 %HW 2 Problem 2
 
-%Initialize Program
+%% Initialize Program
 clearvars; clc; disp("Problem 2")
 
 
-%Initial Temperature Guesses
+%% Initial Temperature Guesses
 T = ones(12,1);
 T(1) = input("T1 initial guess? ");
 T(2) = input("T2 initial guess? ");
@@ -20,7 +20,7 @@ T(10) = input("T10 initial guess? ");
 T(11) = input("T11 initial guess? ");
 T(12) = input("T12 initial guess? ");
 
-%Residuals
+%% Residuals
 R = ones(12,1);
 R(1) = abs(215-8*T(1)+2*T(2)+4*T(4));
 R(2) = abs(2*T(1)-8*T(2)+2*T(3)+4*T(5)+15);
@@ -35,13 +35,13 @@ R(10) = abs(2*T(7)+T(11)+100-4*T(10));
 R(11) = abs(2*T(8)+T(10)+T(12)-4*T(11));
 R(12) = abs(T(9)+T(11)+50-4.5*T(12));
 
-%Largest Residual
+%% Largest Residual
 [residual, index] = max(R);
 
-%Iteration Count
+%% Iteration Count
 iterations = 0;
 
-%Loop
+%% Loop
 while residual > 0.1
     if(index==1)
         T(1) = (215+2*T(2)+4*T(4))/8;
@@ -154,21 +154,21 @@ while residual > 0.1
     end
 end
 
-%Results
+%% Results
 node = ["T1" "T2" "T3" "T4" "T5" "T6" "T7" "T8" "T9" "T10" "T11" "T12"]';
 Node = char(node);
 Temperature = T;
 Residual = R;
 
-%Display Iterations
+%% Display Iterations
 it = ['After ', num2str(iterations), ' iterations'];
 disp(it)
 
-%Table Results
+%% Table Results
 Prob_2 = table(Node, Temperature, Residual);
 disp(Prob_2)
 
-%Print
+%% Print
 publish('HW2_P2.m','evalCode',false);
 
 Published with MATLAB® R2018b
