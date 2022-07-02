@@ -1,34 +1,33 @@
 %ME 4720
 %HW 2 Problem 1
 
-%Initialize Program
+%% Initialize Program
 clearvars; clc; disp("Problem 1")
 
-%Extra
+%% Extra
 A = sym('T_A'); B = sym('T_B'); C = sym('T_C'); D = sym('T_D');
 
-
-%Initial Temperature Guesses
+%% Initial Temperature Guesses
 T = ones(4,1);
 T(1) = input("TA initial guess? ");
 T(2) = input("TB initial guess? ");
 T(3) = input("TC initial guess? ");
 T(4) = input("TD initial guess? ");
 
-%Residuals
+%% Residuals
 R = ones(4,1);
 R(1) = abs(1000+T(2)-4*T(1));
 R(2) = abs(600+T(1)+T(3)-4*T(2));
 R(3) = abs(600+T(2)+T(4)-4*T(3));
 R(4) = abs(600+2*T(3)-4*T(4));
 
-%Largest Residual
+%% Largest Residual
 [residual, index] = max(R);
 
-%Iteration Count
+%% Iteration Count
 iterations = 0;
 
-%Loop
+%% Loop
 while residual > 0.1
     if(index==1)
         T(1) = 0.25*(1000+T(2));
@@ -65,7 +64,7 @@ while residual > 0.1
     end
 end
 
-%Results
+%% Results
 node = ["A" "B" "C" "D"]';
 Node = char(node);
 Temperature = T;
